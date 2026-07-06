@@ -55,9 +55,667 @@
 
     <!-- 🌐 NAVIGATION BAR -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-[#050811]/80 backdrop-blur-md border-b border-brand-border/40 px-6 py-4">
-        <div class="max-w-6xl mx-
-<truncated 45214 bytes>
- badgeClass = "bg-brand/10 text-brand border-brand/20";
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="#" class="code-font text-brand font-bold text-lg tracking-wider">&lt;PHILOG.TODAY&gt;</a>
+            <div class="hidden md:flex space-x-6 text-sm text-slate-300 font-medium">
+                <a href="#about" class="hover:text-brand transition-colors">소개</a>
+                <a href="#timeline" class="hover:text-brand transition-colors">성장 타임라인</a>
+                <a href="#live-engine" class="hover:text-brand transition-colors">실시간 엔진</a>
+                <a href="#calendar" class="hover:text-brand transition-colors">일정</a>
+                <a href="#blog" class="hover:text-brand transition-colors">블로그</a>
+                <a href="#guestbook" class="hover:text-brand transition-colors">방명록</a>
+                <a href="#owner-zone" class="hover:text-brand font-semibold text-[#8bff60]/90 transition-colors">🔒 Owner</a>
+            </div>
+            <button onclick="toggleDarkMode()" class="text-slate-400 hover:text-brand transition-colors">
+                <i class="fa-solid fa-sun text-lg id-theme-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 👤 SECTION 1: HERO (ABOUT) -->
+    <section id="about" class="pt-32 pb-24 px-6 max-w-5xl mx-auto text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-radial-gradient from-brand/10 to-transparent blur-3xl -z-10"></div>
+        <div class="relative inline-block mb-6">
+            <div class="w-32 h-32 rounded-full border-2 border-brand p-1 bg-brand-dark overflow-hidden mx-auto shadow-lg shadow-brand/20">
+                <img src="profile.png" alt="이루다 프로필" class="w-full h-full object-cover rounded-full">
+            </div>
+            <span class="absolute bottom-1 right-2 bg-emerald-500 w-5 h-5 rounded-full border-4 border-brand-dark flex items-center justify-center animate-pulse"></span>
+        </div>
+        
+        <p class="text-sm code-font text-brand uppercase tracking-widest mb-2">Active AI Product Developer</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 leading-tight">
+            기록하며 성장하는 AI 개발자 <br class="md:hidden">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand via-emerald-400 to-teal-400">이루다</span> 입니다.
+        </h1>
+        <p class="max-w-xl mx-auto text-slate-400 text-sm md:text-base leading-relaxed mb-8">
+            아이디어가 제품이 되고, 제품이 가치가 되는 모든 과정을 직접 증명합니다. <br>
+            기술적 도전을 즐기며 매일의 성장을 퍼블릭에 공유하고 있습니다.
+        </p>
+
+        <!-- SNS LINKS -->
+        <div class="flex justify-center space-x-4 mb-12">
+            <a href="https://x.com/aprilbirdhi" target="_blank" class="w-10 h-10 rounded-full bg-brand-card border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand hover:border-brand transition-all shadow-md"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.threads.net/@mongninui.1111" target="_blank" class="w-10 h-10 rounded-full bg-brand-card border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand hover:border-brand transition-all shadow-md"><i class="fa-brands fa-threads"></i></a>
+            <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full bg-brand-card border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand hover:border-brand transition-all shadow-md"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@leeluda-all" target="_blank" class="w-10 h-10 rounded-full bg-brand-card border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand hover:border-brand transition-all shadow-md"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://github.com/aprilbirdhi-star" target="_blank" class="w-10 h-10 rounded-full bg-brand-card border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand hover:border-brand transition-all shadow-md"><i class="fa-brands fa-github"></i></a>
+        </div>
+
+        <!-- QUICK STATUS BADGES -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            <div class="bg-brand-card/40 border border-brand-border/60 rounded-xl p-4 backdrop-blur-sm">
+                <span class="block text-2xl font-bold text-brand code-font">#03</span>
+                <span class="text-xs text-slate-400">출시된 프로덕트</span>
+            </div>
+            <div class="bg-brand-card/40 border border-brand-border/60 rounded-xl p-4 backdrop-blur-sm">
+                <span class="block text-2xl font-bold text-brand code-font">98%</span>
+                <span class="text-xs text-slate-400">목표 달성률</span>
+            </div>
+            <div class="bg-brand-card/40 border border-brand-border/60 rounded-xl p-4 backdrop-blur-sm">
+                <span class="block text-2xl font-bold text-brand code-font">v2026</span>
+                <span class="text-xs text-slate-400">현재 스택 버전</span>
+            </div>
+            <div class="bg-brand-card/40 border border-brand-border/60 rounded-xl p-4 backdrop-blur-sm">
+                <span class="block text-2xl font-bold text-brand code-font">124일</span>
+                <span class="text-xs text-slate-400 text-center">연속 빌드 진행 중</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⏳ SECTION 2: 누적 성장 마일스톤 -->
+    <section id="timeline" class="py-24 bg-brand-dark/40 border-y border-brand-border/30 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold tracking-widest text-brand uppercase">Milestones</span>
+                <h2 class="text-3xl font-extrabold mt-1">누적 성장 마일스톤</h2>
+                <p class="text-slate-400 text-sm mt-2">지금까지 설계하고 실제로 유저 배포에 도달한 소중한 프로젝트 발자취입니다.</p>
+            </div>
+
+            <!-- TIMELINE PATHWAY -->
+            <div class="relative border-l border-brand-border/80 ml-4 md:ml-32 space-y-12">
+                <!-- Project 3 -->
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand border-4 border-brand-dark shadow-[0_0_10px_#8bff60]"></span>
+                    <span class="absolute right-full mr-8 text-xs font-semibold text-brand hidden md:inline-block whitespace-nowrap code-font">2026.05.12 (#03)</span>
+                    <div class="bg-brand-card border border-brand-border rounded-xl p-6 hover:shadow-lg hover:shadow-brand/5 transition-all">
+                        <span class="text-xs font-semibold text-brand md:hidden block mb-1">2026.05.12 (#03)</span>
+                        <h3 class="text-xl font-bold mb-2 flex items-center gap-2">
+                            <span>📅 오늘도 (Oneuldo.world)</span>
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            매일의 생각과 루틴을 완벽하게 기록하고 정량 분석하는 감성 해빗 트래커이자 다이어리 엔진입니다. 
+                            사용자의 작성 패턴을 기반으로 라이프 밸런스 지수를 차트화해 제공합니다.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] bg-brand-border px-2 py-1 rounded text-slate-300 font-medium">Next.js 14</span>
+                            <span class="text-[10px] bg-brand-border px-2 py-1 rounded text-slate-300 font-medium">TypeScript</span>
+                            <span class="text-[10px] bg-brand-border px-2 py-1 rounded text-slate-300 font-medium">Tailwind CSS</span>
+                            <span class="text-[10px] bg-brand-border px-2 py-1 rounded text-slate-300 font-medium">Supabase</span>
+                        </div>
+                        <a href="https://www.oneuldo.world/" target="_blank" class="inline-flex items-center text-xs font-semibold text-brand hover:underline gap-1">서비스 구경하기 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-600 border-4 border-brand-dark"></span>
+                    <span class="absolute right-full mr-8 text-xs font-semibold text-slate-400 hidden md:inline-block whitespace-nowrap code-font">2026.03.01 (#02)</span>
+                    <div class="bg-brand-card/70 border border-brand-border/60 rounded-xl p-6 hover:shadow-lg transition-all">
+                        <span class="text-xs font-semibold text-slate-400 md:hidden block mb-1">2026.03.01 (#02)</span>
+                        <h3 class="text-xl font-bold mb-2 text-slate-300 flex items-center gap-2">
+                            <span>🎮 ABC GAME</span>
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            귀여운 인터랙티브 캐릭터 반응형 시각 효과를 결합해, 입문 개발자나 아동이 영어를 
+                            웹 오디오 이펙트와 함께 쉽고 입체적으로 학습할 수 있도록 지원하는 모던 캔버스 게임입니다.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] bg-brand-border px-2 py-1 rounded text-slate-400 font-medium">Vanilla JS</span>
+                            <span class="text-[10px] bg-brand-border px-2 py-1 rounded text-slate-400 font-medium">HTML5 Canvas</span>
+                            <span class="text-[10px] bg-brand-border px-2 py-1 rounded text-slate-400 font-medium">Web Audio API</span>
+                        </div>
+                        <a href="https://gen-lang-client-0987457884.web.app/" target="_blank" class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-brand hover:underline gap-1">게임 플레이하기 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <!-- Project 1 -->
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-600 border-4 border-brand-dark"></span>
+                    <span class="absolute right-full mr-8 text-xs font-semibold text-slate-400 hidden md:inline-block whitespace-nowrap code-font">2026.01.15 (#01)</span>
+                    <div class="bg-brand-card/70 border border-brand-border/60 rounded-xl p-6 hover:shadow-lg transition-all">
+                        <span class="text-xs font-semibold text-slate-400 md:hidden block mb-1">2026.01.15 (#01)</span>
+                        <h3 class="text-xl font-bold mb-2 text-slate-300 flex items-center gap-2">
+                            <span>✏️ ABC TRACING</span>
+                        </h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                            터치 스크린과 마우스 입력을 인식하여 알파벳의 올바른 획순 가이드를 제공하는 교육용 반응형 웹 드로잉 서비스입니다.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[10px] bg-brand-border px-2 py-1 rounded text-slate-400 font-medium">React</span>
+                            <span class="text-[10px] bg-brand-border px-2 py-1 rounded text-slate-400 font-medium">Vite</span>
+                            <span class="text-[10px] bg-brand-border px-2 py-1 rounded text-slate-400 font-medium">Canvas API</span>
+                        </div>
+                        <a href="http://119.206.110.207:5173/" target="_blank" class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-brand hover:underline gap-1">앱 구경하기 <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🚀 SECTION 3: 실시간 엔진 -->
+    <section id="live-engine" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <span class="text-xs font-bold tracking-widest text-brand uppercase">BUILD IN PUBLIC</span>
+            <h2 class="text-3xl font-extrabold mt-1">나의 실시간 작업 엔진</h2>
+            <p class="text-slate-400 text-sm mt-2">오늘 집중하고 있는 코드 업무의 실시간 진척도와 가상 AI 비서의 분석 리포트입니다.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            
+            <!-- 1. Focus Project -->
+            <div class="bg-brand-card border border-brand-border rounded-2xl p-6 lg:col-span-4 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold text-brand bg-brand/10 border border-brand/20 px-2.5 py-1 rounded-full"><i class="fa-solid fa-gear animate-spin mr-1"></i> Coding Phase</span>
+                        <span class="text-xs font-medium text-slate-400 code-font">MindLog v1.1</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2">🚀 AI 기반 감정 일기장 (MindLog)</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-6">
+                        작성 글을 인공지능이 분석하여 심리 장벽을 진단하고 리포트를 산출하는 모바일 연동 플랫폼 솔루션
+                    </p>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-center justify-between text-xs text-slate-300">
+                            <span><i class="fa-regular fa-circle-check text-brand mr-1"></i> Framer Motion 연동</span>
+                            <span class="text-[10px] text-brand">완료</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-slate-300">
+                            <span><i class="fa-regular fa-circle-check text-brand mr-1"></i> OpenAI API 튜닝</span>
+                            <span class="text-[10px] text-brand">완료</span>
+                        </div>
+                        <div class="flex items-center justify-between text-xs text-slate-400">
+                            <span><i class="fa-solid fa-spinner animate-spin text-slate-500 mr-1"></i> 로컬 DB 인덱스 튜닝</span>
+                            <span class="text-[10px] text-slate-400">진행 중</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center text-xs text-slate-400 mb-1">
+                        <span>전체 마일스톤 달성률</span>
+                        <span class="font-bold text-brand code-font" id="overall-progress">75%</span>
+                    </div>
+                    <div class="w-full bg-brand-border h-2 rounded-full overflow-hidden">
+                        <div class="h-full bg-gradient-to-r from-brand to-emerald-400 transition-all duration-500" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Interactive To-Do List -->
+            <div class="bg-brand-card border border-brand-border rounded-2xl p-6 lg:col-span-4">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-bold text-sm text-slate-200"><i class="fa-solid fa-list-check text-brand mr-1.5"></i> 오늘의 개발 세션</h3>
+                    <span class="text-[10px] bg-brand-border text-slate-300 px-2 py-0.5 rounded-full code-font" id="todo-counter">0 / 5 완료</span>
+                </div>
+                
+                <div class="space-y-3" id="todo-container">
+                    <label class="flex items-start gap-3 bg-[#0a101f] border border-brand-border/40 p-3 rounded-lg cursor-pointer hover:border-brand-border transition-all">
+                        <input type="checkbox" class="todo-checkbox mt-1 rounded border-slate-600 text-brand focus:ring-brand focus:ring-offset-brand-dark" onchange="onTodoChange()">
+                        <span class="text-xs text-slate-300 leading-normal">🔑 OpenAI 예외처리 에러 가드 코드 작성</span>
+                    </label>
+                    <label class="flex items-start gap-3 bg-[#0a101f] border border-brand-border/40 p-3 rounded-lg cursor-pointer hover:border-brand-border transition-all">
+                        <input type="checkbox" class="todo-checkbox mt-1 rounded border-slate-600 text-brand focus:ring-brand focus:ring-offset-brand-dark" onchange="onTodoChange()">
+                        <span class="text-xs text-slate-300 leading-normal">📊 인프라 운영비 및 예산 연동 차트 구축</span>
+                    </label>
+                    <label class="flex items-start gap-3 bg-[#0a101f] border border-brand-border/40 p-3 rounded-lg cursor-pointer hover:border-brand-border transition-all">
+                        <input type="checkbox" class="todo-checkbox mt-1 rounded border-slate-600 text-brand focus:ring-brand focus:ring-offset-brand-dark" onchange="onTodoChange()">
+                        <span class="text-xs text-slate-300 leading-normal">📝 마크다운 블로그 포스트 초안 기획</span>
+                    </label>
+                    <label class="flex items-start gap-3 bg-[#0a101f] border border-brand-border/40 p-3 rounded-lg cursor-pointer hover:border-brand-border transition-all">
+                        <input type="checkbox" class="todo-checkbox mt-1 rounded border-slate-600 text-brand focus:ring-brand focus:ring-offset-brand-dark" onchange="onTodoChange()">
+                        <span class="text-xs text-slate-300 leading-normal">🛠️ Vercel 프로덕션 도메인 SSL 상태 점검</span>
+                    </label>
+                    <label class="flex items-start gap-3 bg-[#0a101f] border border-brand-border/40 p-3 rounded-lg cursor-pointer hover:border-brand-border transition-all">
+                        <input type="checkbox" class="todo-checkbox mt-1 rounded border-slate-600 text-brand focus:ring-brand focus:ring-offset-brand-dark" onchange="onTodoChange()">
+                        <span class="text-xs text-slate-300 leading-normal">🔥 Tailwind CSS 중복 클래스 리팩토링</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 3. Dynamic AI Agent UI -->
+            <div class="bg-brand-card border border-brand-border rounded-2xl p-6 lg:col-span-4 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-sm text-slate-200"><i class="fa-solid fa-robot text-indigo-400 mr-1.5"></i> AI 동반 에이전트</h3>
+                        <span class="inline-flex h-2 w-2 rounded-full bg-indigo-400"></span>
+                    </div>
+                    
+                    <div class="bg-[#0a101f] border border-brand-border/40 rounded-xl p-4 min-h-[140px] flex items-center justify-center relative">
+                        <div class="absolute -top-2 left-4 text-[9px] bg-indigo-900/50 text-indigo-300 border border-indigo-700/50 px-2 py-0.5 rounded code-font">Agent CodeBot</div>
+                        <p class="text-xs text-slate-300 leading-relaxed text-center" id="agent-speech">
+                            "안녕하세요 루다님! 오늘도 같이 멋진 코드를 작성해 볼까요? 투두리스트를 완료하면 제가 격려의 분석을 시작할게요!"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 pt-4 border-t border-brand-border/40 mt-4">
+                    <div class="w-10 h-10 rounded-full bg-indigo-950/80 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-lg">
+                        <i class="fa-solid fa-brain animate-pulse"></i>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-bold text-indigo-300">CodeBot AI 1.2v</span>
+                        <span class="text-[10px] text-slate-400" id="agent-status">상태: 집중도 0% 엔진 가동 🚀</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 📅 SECTION 4: 개발 마일스톤 일정표 -->
+    <section id="calendar" class="py-24 bg-brand-dark/40 border-y border-brand-border/30 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold tracking-widest text-brand uppercase">Sprint Roadmap</span>
+                <h2 class="text-3xl font-extrabold mt-1">개발 마일스톤 일정표</h2>
+                <p class="text-slate-400 text-sm mt-2">이번 달 주요 스프린트 계획과 마일스톤 릴리즈 일정입니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Calendar -->
+                <div class="lg:col-span-7 bg-brand-card border border-brand-border rounded-2xl p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="font-bold text-md text-slate-200"><i class="fa-regular fa-calendar-days text-brand mr-2"></i> 2026년 7월</h3>
+                        <span class="text-xs text-brand bg-brand/10 border border-brand/20 px-2.5 py-0.5 rounded-full font-semibold">스프린트 시즌 #2</span>
+                    </div>
+
+                    <!-- Days Header -->
+                    <div class="grid grid-cols-7 gap-2 text-center text-xs font-bold text-slate-400 mb-4">
+                        <div>일</div><div>월</div><div>화</div><div>수</div><div>목</div><div>금</div><div>토</div>
+                    </div>
+
+                    <!-- Day Grid -->
+                    <div class="grid grid-cols-7 gap-2 text-center" id="calendar-grid">
+                        <!-- Filled by JS dynamically -->
+                    </div>
+                </div>
+
+                <!-- Schedule Info -->
+                <div class="lg:col-span-5 flex flex-col justify-between">
+                    <div class="bg-brand-card border border-brand-border rounded-2xl p-6 h-full flex flex-col justify-between">
+                        <div>
+                            <div class="border-b border-brand-border/40 pb-4 mb-4">
+                                <span class="text-[10px] uppercase text-slate-400 tracking-wider">Selected Date Schedule</span>
+                                <h4 class="text-lg font-bold text-brand mt-0.5" id="selected-date-title">2026.07.06 (오늘)</h4>
+                            </div>
+
+                            <div class="space-y-3" id="schedule-list">
+                                <!-- Filled by JS dynamically -->
+                            </div>
+                        </div>
+
+                        <p class="text-[10px] text-slate-500 mt-6 flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info text-brand/80"></i> 달력의 하이라이트 활성화된 날짜를 누르면 세부 스프린트가 표시됩니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📝 SECTION 5: 블로그 -->
+    <section id="blog" class="py-24 px-6 max-w-5xl mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <span class="text-xs font-bold tracking-widest text-brand uppercase">My Thoughts</span>
+                <h2 class="text-3xl font-extrabold mt-1">일상과 기술에 관한 단상</h2>
+            </div>
+            <a href="#" class="text-xs font-bold text-brand border border-brand/20 bg-brand/5 px-4 py-2 rounded-lg hover:bg-brand/10 transition-colors flex items-center gap-1.5">블로그 전체글 보기 <i class="fa-solid fa-arrow-right-long"></i></a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-brand-card border border-brand-border rounded-xl p-6 hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between text-[10px] text-slate-400 mb-3">
+                        <span class="font-medium"><i class="fa-regular fa-folder mr-1"></i> 에세이/일상</span>
+                        <span class="code-font">2026.07.06</span>
+                    </div>
+                    <h3 class="font-bold text-base text-slate-100 mb-2 leading-snug hover:text-brand transition-colors"><a href="#">개발자가 블로그를 직접 짜서 운영해야 하는 확실한 이유</a></h3>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                        이미 완성도 높은 상용 플랫폼이 많음에도 나만의 소스 코드로 직접 빌드된 전용 아지트를 가졌을 때 찾아오는 기술적 자유도에 관하여.
+                    </p>
+                </div>
+                <a href="#" class="text-xs font-semibold text-brand inline-flex items-center gap-1 hover:underline">계속 읽기 <i class="fa-solid fa-chevron-right text-[10px]"></i></a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-brand-card border border-brand-border rounded-xl p-6 hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between text-[10px] text-slate-400 mb-3">
+                        <span class="font-medium"><i class="fa-regular fa-folder mr-1"></i> 기술/학습</span>
+                        <span class="code-font">2026.06.28</span>
+                    </div>
+                    <h3 class="font-bold text-base text-slate-100 mb-2 leading-snug hover:text-brand transition-colors"><a href="#">인공지능 도구(AI)를 사용하며 변한 나의 하루 코딩 루틴</a></h3>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                        단순히 검색에 의존하던 에러 핸들링을 넘어서, 개발 에이전트와 완벽하게 핑퐁 대화를 이어나가며 코딩 속도를 3배 이상 올린 생생한 후기.
+                    </p>
+                </div>
+                <a href="#" class="text-xs font-semibold text-brand inline-flex items-center gap-1 hover:underline">계속 읽기 <i class="fa-solid fa-chevron-right text-[10px]"></i></a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-brand-card border border-brand-border rounded-xl p-6 hover:-translate-y-1 transition-transform duration-300 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between text-[10px] text-slate-400 mb-3">
+                        <span class="font-medium"><i class="fa-regular fa-folder mr-1"></i> 일상/일기</span>
+                        <span class="code-font">2026.06.14</span>
+                    </div>
+                    <h3 class="font-bold text-base text-slate-100 mb-2 leading-snug hover:text-brand transition-colors"><a href="#">초심으로 돌아가는 헬스장 3개월 등록기</a></h3>
+                    <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                        허리와 목 건강을 위해 결심한 헬스 피트니스 도전기입니다. 개발자에게 가장 중요한 최후의 기술 스택은 튼튼한 하체일지도 모르겠습니다.
+                    </p>
+                </div>
+                <a href="#" class="text-xs font-semibold text-brand inline-flex items-center gap-1 hover:underline">계속 읽기 <i class="fa-solid fa-chevron-right text-[10px]"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 💬 SECTION 6: 응원 한 줄 남기기 -->
+    <section id="guestbook" class="py-24 bg-brand-dark/40 border-t border-brand-border/30 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-xs font-bold tracking-widest text-brand uppercase">Guestbook</span>
+                <h2 class="text-3xl font-extrabold mt-1">응원 한 줄 남기기</h2>
+                <p class="text-slate-400 text-sm mt-2">이곳에 소중한 격려의 말을 남겨주세요. 브라우저에 즉시 저장됩니다!</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <!-- Guestbook Form -->
+                <div class="md:col-span-5 bg-brand-card border border-brand-border rounded-2xl p-6 h-fit">
+                    <form id="guestbook-form" onsubmit="addComment(event)">
+                        <div class="mb-4">
+                            <label class="block text-xs font-bold text-slate-300 mb-2">이름</label>
+                            <input type="text" id="gb-name" required placeholder="홍길동" class="w-full bg-[#050811] border border-brand-border focus:border-brand rounded-lg px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:ring-1 focus:ring-brand">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-xs font-bold text-slate-300 mb-2">캐릭터 아이콘</label>
+                            <div class="flex gap-2">
+                                <button type="button" onclick="selectIcon('💻')" class="gb-icon-btn p-2 border border-brand-border rounded-lg bg-[#050811] text-md hover:border-brand select-none">💻</button>
+                                <button type="button" onclick="selectIcon('🚀')" class="gb-icon-btn p-2 border border-brand-border rounded-lg bg-[#050811] text-md hover:border-brand select-none">🚀</button>
+                                <button type="button" onclick="selectIcon('☕')" class="gb-icon-btn p-2 border border-brand-border rounded-lg bg-[#050811] text-md hover:border-brand select-none">☕</button>
+                                <button type="button" onclick="selectIcon('🔥')" class="gb-icon-btn p-2 border border-brand-border rounded-lg bg-[#050811] text-md hover:border-brand select-none">🔥</button>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-xs font-bold text-slate-300 mb-2">메시지</label>
+                            <textarea id="gb-msg" required placeholder="방문 인사를 남겨주세요!" rows="3" class="w-full bg-[#050811] border border-brand-border focus:border-brand rounded-lg px-4 py-2.5 text-xs text-slate-100 focus:outline-none focus:ring-1 focus:ring-brand resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand text-[#050811] py-2.5 rounded-lg text-xs font-extrabold hover:brightness-110 transition-all shadow-md shadow-brand/10">방명록 남기기</button>
+                    </form>
+                </div>
+
+                <!-- Guestbook List -->
+                <div class="md:col-span-7 space-y-3 max-h-[380px] overflow-y-auto pr-2" id="guestbook-list">
+                    <!-- Dynamic comments loaded from localstorage -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔑 SECTION 7: OWNER ZONE -->
+    <section id="owner-zone" class="py-24 border-t border-brand-border/40 bg-gradient-to-b from-[#050811] to-[#020408] px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold tracking-widest text-indigo-400 uppercase">🔒 Owner Restricted</span>
+                <h2 class="text-2xl font-extrabold mt-1">개발자 전용 스페이스</h2>
+                <p class="text-slate-400 text-xs mt-1">소유자만의 스터디 플래너 및 SaaS 지출 내역을 관리하는 통합 통제 센터입니다.</p>
+            </div>
+
+            <!-- UNIFIED LOCK GATED PORTAL -->
+            <div class="bg-brand-card/30 border border-brand-border/80 rounded-2xl p-6 relative overflow-hidden min-h-[300px] flex flex-col justify-center" id="lock-portal">
+                
+                <!-- BLURRED PROTECTED WRAPPER -->
+                <div id="protected-content" class="filter blur-md pointer-events-none transition-all duration-700 select-none">
+                    <!-- Owner Tabs -->
+                    <div class="flex border-b border-brand-border mb-6">
+                        <button onclick="switchTab('saas')" id="tab-btn-saas" class="px-5 py-3 text-sm font-bold border-b-2 border-brand text-brand">SaaS 인프라 재정</button>
+                        <button onclick="switchTab('study')" id="tab-btn-study" class="px-5 py-3 text-sm font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200">프라이빗 스터디룸</button>
+                    </div>
+
+                    <!-- TAB 1: SaaS Financials -->
+                    <div id="tab-content-saas" class="tab-pane block">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                            <div class="md:col-span-4">
+                                <span class="text-xs text-slate-400">인프라 운영 예산 비율</span>
+                                <div class="text-2xl font-bold text-slate-200 my-1">₩48,500 <span class="text-xs text-slate-400 font-normal">/ 월 예산 ₩100,000</span></div>
+                                <div class="w-full bg-brand-border h-2 rounded-full overflow-hidden mt-2">
+                                    <div class="h-full bg-brand" style="width: 48.5%"></div>
+                                </div>
+                            </div>
+                            <div class="md:col-span-8 grid grid-cols-2 gap-3 text-left">
+                                <div class="bg-[#050811] p-3 rounded-lg border border-brand-border/40">
+                                    <span class="block text-[10px] text-slate-500">GitHub Copilot</span>
+                                    <span class="text-xs font-bold text-slate-300">₩13,000 / 월</span>
+                                </div>
+                                <div class="bg-[#050811] p-3 rounded-lg border border-brand-border/40">
+                                    <span class="block text-[10px] text-slate-500">OpenAI API</span>
+                                    <span class="text-xs font-bold text-slate-300">₩15,000 / 월</span>
+                                </div>
+                                <div class="bg-[#050811] p-3 rounded-lg border border-brand-border/40">
+                                    <span class="block text-[10px] text-slate-500">Cursor Pro</span>
+                                    <span class="text-xs font-bold text-slate-300">₩20,500 / 월</span>
+                                </div>
+                                <div class="bg-[#050811] p-3 rounded-lg border border-brand-border/40">
+                                    <span class="block text-[10px] text-slate-500">Vercel Pro</span>
+                                    <span class="text-xs font-bold text-brand font-mono">Free Tier (₩0)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: Private Study -->
+                    <div id="tab-content-study" class="tab-pane hidden">
+                        <div class="space-y-4 text-left text-xs text-slate-300 leading-relaxed">
+                            <div class="bg-[#050811] border-l-4 border-indigo-400 p-4 rounded">
+                                <h5 class="font-bold text-slate-200 text-sm mb-1">🔥 AI City Builders 마스터코스 공부 기록</h5>
+                                <p class="text-slate-400">학습 기조: Next.js 14 App Router의 서버 콤포넌트 캐싱 라이프사이클 마스터하기. Vercel Edge Runtime에서의 지연 시간 단축 연구.</p>
+                            </div>
+                            <div class="bg-[#050811] border-l-4 border-emerald-400 p-4 rounded">
+                                <h5 class="font-bold text-slate-200 text-sm mb-1">⚡ 2026년 하반기 목표 스터디 강의 리스트</h5>
+                                <p class="text-slate-400">- 딥러닝 트랜스포머 아키텍처 완전 해부 강의 <br>- Tailwind CSS 애니메이션 테크닉 고도화</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="lockSystem()" class="mt-6 text-[10px] text-slate-400 hover:text-brand flex items-center gap-1 mx-auto">
+                        <i class="fa-solid fa-lock"></i> 대시보드 즉시 다시 잠그기
+                    </button>
+                </div>
+
+                <!-- FLOATING PASSCODE INTERFACE -->
+                <div id="lock-overlay" class="absolute inset-0 z-10 flex flex-col items-center justify-center p-6 bg-brand-dark/90 backdrop-blur-sm transition-opacity duration-500">
+                    <div class="w-12 h-12 rounded-full bg-brand/10 border border-brand/30 flex items-center justify-center text-brand text-lg mb-3">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-slate-200 mb-1">소유자 전용 암호 인증</h4>
+                    <p class="text-[10px] text-slate-400 text-center mb-4">민감한 스터디/재무 정보를 확인하려면 <br class="md:hidden">마스터 패스코드를 입력해 주세요.</p>
+                    
+                    <div class="flex items-center gap-2 max-w-xs">
+                        <input type="password" id="passcode-input" placeholder="Passcode (예: 1234)" class="bg-[#050811] border border-brand-border focus:border-brand rounded-lg px-4 py-2 text-xs text-slate-100 text-center focus:outline-none focus:ring-1 focus:ring-brand w-40">
+                        <button onclick="unlockSystem()" class="bg-brand text-[#050811] px-4 py-2 rounded-lg text-xs font-bold hover:brightness-110 transition-colors">잠금해제</button>
+                    </div>
+                    <span id="lock-error" class="text-[10px] text-rose-500 font-semibold mt-2 hidden">올바르지 않은 마스터 암호입니다.</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌐 FOOTER -->
+    <footer class="py-12 border-t border-brand-border/30 bg-[#020408] text-center text-xs text-slate-500 px-6">
+        <p class="code-font mb-2">&copy; 2026 이루다 (Luda Rhee). Crafted with 💚</p>
+        <p>This page is open-source and respects user data privacy. Build in Public.</p>
+    </footer>
+
+
+    <!-- 💡 INTERACTIVE SCRIPTS -->
+    <script>
+        // Theme Storage (Light / Dark Mode switcher)
+        let isDarkMode = true;
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const themeIcon = document.querySelector('.id-theme-icon');
+            if(isDarkMode) {
+                body.classList.remove('bg-white', 'text-slate-900');
+                body.classList.add('bg-[#050811]', 'text-slate-100');
+                themeIcon.className = "fa-solid fa-sun text-lg id-theme-icon";
+            } else {
+                body.classList.remove('bg-[#050811]', 'text-slate-100');
+                body.classList.add('bg-white', 'text-slate-900');
+                themeIcon.className = "fa-solid fa-moon text-lg id-theme-icon";
+            }
+        }
+
+        // --- TODO LIST & AI SPEECH CONTROLLER ---
+        let completedTodosCount = 0;
+        const totalTodosCount = 5;
+
+        const botSpeeches = [
+            "\"안녕하세요 이루다님! 오늘도 힘차게 스프린트 목적지에 달성해 보죠!\"",
+            "\"시작이 반입니다! 차근차근 첫 번째 단추를 깔끔하게 꿰었네요.\"",
+            "\"좋은 진척률입니다! 흐름을 계속해서 훌륭하게 이어나가세요.\"",
+            "\"벌써 절반 이상을 정복하셨군요. 집중력이 매우 돋보이는 중입니다!\"",
+            "\"거의 마무리가 머지않았습니다! 역시 엄청난 추진력을 가지셨네요.\"",
+            "\"🎉 100% 완전 정복! 완벽하게 모든 마일스톤을 클리어했습니다! 푹 쉬세요!\""
+        ];
+
+        function initTodos() {
+            // Restore from localStorage
+            const savedStates = JSON.parse(localStorage.getItem('todo_states') || '[]');
+            const checkboxes = document.querySelectorAll('.todo-checkbox');
+            
+            checkboxes.forEach((cb, idx) => {
+                if (savedStates[idx] !== undefined) {
+                    cb.checked = savedStates[idx];
+                }
+            });
+            updateTodoUI();
+        }
+
+        function onTodoChange() {
+            const checkboxes = document.querySelectorAll('.todo-checkbox');
+            const states = Array.from(checkboxes).map(cb => cb.checked);
+            localStorage.setItem('todo_states', JSON.stringify(states));
+            updateTodoUI();
+        }
+
+        function updateTodoUI() {
+            const checkboxes = document.querySelectorAll('.todo-checkbox');
+            let completed = 0;
+            checkboxes.forEach(cb => {
+                const span = cb.nextElementSibling;
+                if(cb.checked) {
+                    completed++;
+                    span.classList.add('line-through', 'opacity-50', 'text-emerald-400');
+                } else {
+                    span.classList.remove('line-through', 'opacity-50', 'text-emerald-400');
+                }
+            });
+
+            completedTodosCount = completed;
+            document.getElementById('todo-counter').innerText = `${completed} / ${totalTodosCount} 완료`;
+            
+            // AI Bot Speaks dynamically based on progress
+            document.getElementById('agent-speech').innerText = botSpeeches[completed] || botSpeeches[0];
+            
+            // Adjust CodeBot text color
+            if (completed === totalTodosCount) {
+                document.getElementById('agent-status').innerText = "상태: 최고 존엄 코딩 왕성달 👑";
+            } else {
+                document.getElementById('agent-status').innerText = `상태: 집중도 ${completed * 20}% 엔진 가동 🚀`;
+            }
+        }
+
+        // --- INTERACTIVE CALENDAR SPRINT DATA ---
+        const sprintSchedules = {
+            "2026.07.06": [
+                { title: "🔑 OpenAI 예외처리 에러 가드 코드 작성", time: "10:00 - 12:00", tag: "dev" },
+                { title: "📊 인프라 운영비 예산 분석 탭 작업", time: "14:00 - 17:00", tag: "design" }
+            ],
+            "2026.07.10": [
+                { title: "🧪 MindLog 프롬프트 베타 사용성 테스트", time: "11:00 - 13:00", tag: "QA" }
+            ],
+            "2026.07.15": [
+                { title: "⚡ 전역 라우터 가상 Dom 성능 디버그", time: "13:00 - 16:30", tag: "dev" },
+                { title: "📝 블로그 개발 관련 신규 포스팅 발행", time: "17:00 - 18:00", tag: "docs" }
+            ],
+            "2026.07.20": [
+                { title: "🌐 빌드 인 퍼블릭 모바일 UI 최적화 점검", time: "15:00 - 18:00", tag: "design" }
+            ],
+            "2026.07.28": [
+                { title: "🚀 MindLog v1.1 최종 실서버 마스터 런칭", time: "09:00 - 12:00", tag: "deploy" }
+            ]
+        };
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendar-grid');
+            grid.innerHTML = "";
+
+            // Wed start on July 2026 (Wed is index 3)
+            const emptyOffset = 3;
+            const daysInMonth = 31;
+
+            for(let i=0; i < emptyOffset; i++) {
+                grid.innerHTML += `<div></div>`;
+            }
+
+            for(let day=1; day<=daysInMonth; day++) {
+                const dateStr = `2026.07.${day < 10 ? '0' + day : day}`;
+                const hasSchedule = sprintSchedules[dateStr] !== undefined;
+                const isToday = day === 6;
+
+                let classes = "h-9 w-9 mx-auto flex items-center justify-center rounded-lg text-xs font-medium cursor-pointer transition-colors relative ";
+                
+                if (isToday) {
+                    classes += "bg-brand text-brand-dark font-extrabold shadow-[0_0_10px_#8bff60] ";
+                } else if (hasSchedule) {
+                    classes += "bg-emerald-950/60 text-brand border border-brand/30 hover:bg-brand/20 ";
+                } else {
+                    classes += "hover:bg-brand-border text-slate-300 ";
+                }
+
+                const dot = hasSchedule && !isToday ? `<span class="absolute bottom-0.5 w-1 h-1 rounded-full bg-brand"></span>` : "";
+
+                grid.innerHTML += `
+                    <div class="${classes}" onclick="selectDate('${dateStr}')">
+                        ${day}
+                        ${dot}
+                    </div>
+                `;
+            }
+            selectDate("2026.07.06"); // Set Initial
+        }
+
+        function selectDate(dateStr) {
+            document.getElementById('selected-date-title').innerText = `${dateStr} ${dateStr === '2026.07.06' ? '(오늘)' : ''}`;
+            const listContainer = document.getElementById('schedule-list');
+            listContainer.innerHTML = "";
+
+            const schedules = sprintSchedules[dateStr];
+            if (!schedules || schedules.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="text-center py-8 text-slate-500 text-xs">
+                        <i class="fa-regular fa-calendar-minus text-lg mb-2 block"></i>
+                        예정된 마일스톤 일정이 없습니다.
+                    </div>
+                `;
+                return;
+            }
+
+            schedules.forEach(item => {
+                let badgeClass = "bg-brand/10 text-brand border-brand/20";
                 if(item.tag === 'design') badgeClass = "bg-indigo-950/60 text-indigo-300 border-indigo-700/30";
                 if(item.tag === 'QA') badgeClass = "bg-amber-950/60 text-amber-300 border-amber-700/30";
                 
