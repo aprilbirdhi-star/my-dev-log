@@ -2,8 +2,8 @@
 
 기록하며 성장하는 개발자 **이루다**의 포트폴리오 및 일상/기술 로그를 담은 정적 웹사이트입니다.
 
-* **배포 주소**: [https://my-dev-log-nine.vercel.app/](https://my-dev-log-nine.vercel.app/)
-* **원격 저장소**: [GitHub Repository](https://github.com/aprilbirdhi-star/my-dev-log)
+* **배포 주소**: [https://philog.today](https://philog.today)
+* **원격 저장소**: [GitHub Repository](https://github.com/aprilbirdhi-star/philog.today)
 
 ---
 
@@ -36,4 +36,4 @@
   * **상태 관리**: 비밀키 잠금 해제 상태가 새로고침 시에도 유지되도록 브라우저 로컬 스토리지(`localStorage`) 상태 연동 완료.
 * **배포 플랫폼 이전**:
   * 기존 GitHub Pages 404 이슈 해결 및 더 안정적이고 고성능의 CDN 환경을 제공하기 위해 **Vercel** 플랫폼으로 호스팅 이전 완료.
-  * 배포 주소: [https://my-dev-log-nine.vercel.app/](https://my-dev-log-nine.vercel.app/)
+  * 배포 주소: [https://philog.today](https://philog.today)
