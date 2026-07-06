@@ -108,7 +108,7 @@
                 <span class="text-xs text-slate-400">출시된 프로덕트</span>
             </div>
             <div class="bg-brand-card/40 border border-brand-border/60 rounded-xl p-4 backdrop-blur-sm">
-                <span class="block text-2xl font-bold text-brand code-font">98%</span>
+                <span class="block text-2xl font-bold text-brand code-font" id="quick-progress">0%</span>
                 <span class="text-xs text-slate-400">목표 달성률</span>
             </div>
             <div class="bg-brand-card/40 border border-brand-border/60 rounded-xl p-4 backdrop-blur-sm">
@@ -116,7 +116,7 @@
                 <span class="text-xs text-slate-400">현재 스택 버전</span>
             </div>
             <div class="bg-brand-card/40 border border-brand-border/60 rounded-xl p-4 backdrop-blur-sm">
-                <span class="block text-2xl font-bold text-brand code-font">124일</span>
+                <span class="block text-2xl font-bold text-brand code-font" id="quick-build-days">1일</span>
                 <span class="text-xs text-slate-400 text-center">연속 빌드 진행 중</span>
             </div>
         </div>
@@ -628,6 +628,13 @@
             completedTodosCount = completed;
             document.getElementById('todo-counter').innerText = `${completed} / ${totalTodosCount} 완료`;
             
+            // Update quick progress card dynamically
+            const progressPercent = Math.round((completed / totalTodosCount) * 100);
+            const quickProgressEl = document.getElementById('quick-progress');
+            if (quickProgressEl) {
+                quickProgressEl.innerText = `${progressPercent}%`;
+            }
+            
             // AI Bot Speaks dynamically based on progress
             document.getElementById('agent-speech').innerText = botSpeeches[completed] || botSpeeches[0];
             
@@ -864,12 +871,25 @@
             document.getElementById('protected-content').classList.remove('blur-md', 'pointer-events-none', 'select-none');
         }
 
+        function updateBuildDays() {
+            const creationDate = new Date('2026-07-06');
+            const today = new Date();
+            creationDate.setHours(0,0,0,0);
+            today.setHours(0,0,0,0);
+            const diffDays = Math.floor((today - creationDate) / (1000 * 60 * 60 * 24)) + 1;
+            const buildDaysEl = document.getElementById('quick-build-days');
+            if (buildDaysEl) {
+                buildDaysEl.innerText = `${diffDays}일`;
+            }
+        }
+
         // Initialize elements
         window.addEventListener('DOMContentLoaded', () => {
             initTodos();
             renderCalendar();
             loadComments();
             selectIcon('💻');
+            updateBuildDays();
         });
     </script>
 </body>
