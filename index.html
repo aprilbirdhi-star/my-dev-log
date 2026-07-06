@@ -87,7 +87,7 @@
     <header class="fixed top-0 left-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-xl font-bold tracking-wider code-font text-emerald-600 dark:text-brand-light">
-                &lt;PHILOG.TODAY /&gt;
+                &lt;PHILOG.TODAY&gt;
             </a>
             
             <nav class="hidden md:flex space-x-8 font-medium">
@@ -95,6 +95,7 @@
                 <a href="#progress" class="hover:text-emerald-500 transition-colors">투두 &amp; 비서</a>
                 <a href="#calendar-sec" class="hover:text-emerald-500 transition-colors">일정 달력</a>
                 <a href="#timeline" class="hover:text-emerald-500 transition-colors">타임라인</a>
+                <a href="#aicitybuilders-study" class="hover:text-emerald-500 transition-colors">스터디</a>
                 <a href="#dev-ops" class="hover:text-emerald-500 transition-colors">인프라비용</a>
                 <a href="#blog" class="hover:text-emerald-500 transition-colors">생각블로그</a>
                 <a href="#guestbook" class="hover:text-emerald-500 transition-colors">방명록</a>
@@ -150,6 +151,9 @@
                     </a>
                     <a href="https://www.youtube.com/@leeluda-all" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-red-600 text-white hover:scale-110 hover:bg-red-700 transition-all shadow-md" title="YouTube">
                         <i class="fa-brands fa-youtube text-lg"></i>
+                    </a>
+                    <a href="https://huggingface.co" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 hover:scale-110 hover:bg-amber-200 dark:hover:bg-amber-900 transition-all shadow-md" title="Hugging Face">
+                        <span class="text-xl">🤗</span>
                     </a>
                 </div>
             </div>
@@ -438,6 +442,95 @@
                         <div class="hidden md:block w-[45%]"></div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3.2: AI City Builders 스터디 자료 (AI City Builders Study) -->
+        <section id="aicitybuilders-study" class="py-24 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <span class="text-sm font-bold tracking-wider uppercase text-emerald-600 dark:text-brand-light code-font">AI City Builders Study</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2">AI 시티 빌더즈 학습 아카이브</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-2">AI 1인 기업가로 거듭나기 위한 자동화 및 에이전트 구축 스터디 기록입니다.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+                    <!-- 왼쪽 칸: 유튜브 강의 영상 임베드 -->
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xl font-bold flex items-center text-slate-800 dark:text-slate-200">
+                                    <i class="fa-brands fa-youtube text-red-500 mr-2"></i> 추천 스터디 영상
+                                </h3>
+                                <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-red-50 text-red-600 dark:bg-red-950/40 dark:text-red-300">Jay Mentor</span>
+                            </div>
+                            
+                            <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-inner border border-slate-100 dark:border-slate-800 mb-4">
+                                <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/gS3QeZqZ9Hw" title="AI City Builders YouTube Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                            <i class="fa-solid fa-circle-info mr-1 text-emerald-500"></i> AI 에이전트 학교 및 1인 기업 자동화 워크플로우에 관한 핵심 세션입니다.
+                        </div>
+                    </div>
+
+                    <!-- 오른쪽 칸: 스터디 교육자료 및 학습 로드맵 -->
+                    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <h3 class="text-xl font-bold flex items-center border-b border-slate-100 dark:border-slate-800 pb-3 text-slate-800 dark:text-slate-200">
+                                <i class="fa-solid fa-graduation-cap text-indigo-500 mr-2"></i> 스터디 커리큘럼 &amp; 교육자료
+                            </h3>
+
+                            <div class="space-y-4">
+                                <!-- 자료 1 -->
+                                <div class="flex gap-3 items-start">
+                                    <div class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-950/60 text-emerald-600 dark:text-brand-light flex items-center justify-center flex-shrink-0 text-sm">
+                                        <i class="fa-solid fa-network-wired"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">AI 에이전트 &amp; 워크플로우 자동화</h4>
+                                        <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
+                                            n8n, Dify, Connect AI 등을 연동하여 수동 작업을 0으로 만드는 무인 자동화 파이프라인 설계 및 운용.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- 자료 2 -->
+                                <div class="flex gap-3 items-start">
+                                    <div class="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-300 flex items-center justify-center flex-shrink-0 text-sm">
+                                        <i class="fa-solid fa-keyboard"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">바이브 코딩 (Vibe Coding) 기법</h4>
+                                        <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
+                                            자연어(Claude 3.5, Gemini Pro) 프롬프트를 조율하여 별도의 코딩 없이 실무 웹 애플리케이션을 완성해가는 고속 빌드 방법론.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- 자료 3 -->
+                                <div class="flex gap-3 items-start">
+                                    <div class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-300 flex items-center justify-center flex-shrink-0 text-sm">
+                                        <i class="fa-solid fa-coins"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200">AI 1인 기업가 비즈니스 모델</h4>
+                                        <p class="text-[10px] text-slate-500 dark:text-slate-400 leading-relaxed mt-1">
+                                            최소 비용으로 최대 효과를 누리는 요금 대위 지불 모델(토니 딘) 및 무인 콘텐츠 유통 비즈니스 실전 분석.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                            <span class="text-[10px] text-slate-400">자료 출처: AI City Builders 공식 커뮤니티</span>
+                            <a href="https://www.aicitybuilders.com" target="_blank" class="px-3.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-[10px] font-bold shadow transition-all flex items-center gap-1">
+                                공식 자료실 가기 <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
