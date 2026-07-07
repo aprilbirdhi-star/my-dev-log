@@ -81,10 +81,10 @@
             </div>
 
             <!-- CARD NEWS SWIPER BOX -->
-            <div class="relative bg-brand-card border-2 border-brand-border rounded-3xl overflow-hidden shadow-2xl shadow-brand/10 aspect-square w-full flex flex-col justify-between p-8 relative">
+            <div id="swiper-box" class="relative bg-brand-card border-2 border-brand-border rounded-3xl overflow-hidden shadow-2xl shadow-brand/10 aspect-square w-full flex flex-col justify-between p-8">
                 
                 <!-- TOP HEADER -->
-                <div class="flex justify-between items-center z-10">
+                <div id="top-header" class="flex justify-between items-center z-10">
                     <div class="flex items-center gap-2">
                         <div class="instagram-gradient p-[2px] rounded-full">
                             <div class="w-8 h-8 rounded-full border-2 border-brand-card bg-[#050811] flex items-center justify-center text-xs code-font text-brand font-bold select-none">
@@ -96,28 +96,30 @@
                             <span class="block text-[8px] text-slate-500">AI & Developer Lab</span>
                         </div>
                     </div>
-                    <span id="slide-indicator" class="text-[10px] bg-brand-dark border border-brand-border px-2 py-0.5 rounded-full text-slate-400 code-font">1 / 7</span>
                 </div>
 
                 <!-- MIDDLE CONTENT (SLIDE BODY) -->
-                <div class="flex-grow flex flex-col items-center justify-center text-center py-6 z-10" id="slide-content-area">
+                <div class="flex-grow flex flex-col items-center justify-center text-center py-6 z-10 w-full h-full" id="slide-content-area">
                     <!-- Dynamic slide content loaded here -->
                 </div>
 
-                <!-- BOTTOM NAV -->
-                <div class="flex justify-between items-center z-10 pt-4 border-t border-brand-border/40">
-                    <button onclick="prevSlide()" class="w-9 h-9 rounded-full bg-brand-dark hover:bg-brand/10 border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand transition-all">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <!-- Small dots indicator -->
-                    <div class="flex gap-1.5" id="dots-container"></div>
-                    <button onclick="nextSlide()" class="w-9 h-9 rounded-full bg-brand-dark hover:bg-brand/10 border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand transition-all">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-                </div>
-
                 <!-- Subtle radial glow background behind the slide -->
-                <div class="absolute inset-0 bg-radial-gradient from-brand/5 to-transparent pointer-events-none"></div>
+                <div id="radial-glow" class="absolute inset-0 bg-radial-gradient from-brand/5 to-transparent pointer-events-none"></div>
+            </div>
+
+            <!-- EXTERNAL CONTROLS (Dots & Prev/Next Buttons) -->
+            <div class="flex justify-between items-center mt-6 w-full px-2">
+                <button onclick="prevSlide()" class="w-10 h-10 rounded-full bg-brand-card hover:bg-brand/10 border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand transition-all">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <!-- Small dots indicator -->
+                <div class="flex flex-col items-center gap-1">
+                    <div class="flex gap-1.5" id="dots-container"></div>
+                    <span id="slide-indicator" class="text-[9px] text-slate-500 code-font">1 / 7</span>
+                </div>
+                <button onclick="nextSlide()" class="w-10 h-10 rounded-full bg-brand-card hover:bg-brand/10 border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand transition-all">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
 
             <!-- Helpful notice -->
@@ -162,27 +164,46 @@
             const slide = currentPost.slides[currentSlideIndex];
             const contentArea = document.getElementById('slide-content-area');
             const indicator = document.getElementById('slide-indicator');
+            const swiperBox = document.getElementById('swiper-box');
+            const topHeader = document.getElementById('top-header');
+            const radialGlow = document.getElementById('radial-glow');
 
             indicator.innerText = `${currentSlideIndex + 1} / ${currentPost.slides.length}`;
 
-            // Handle visual content (image file vs font-awesome class icon)
-            let visualHtml = "";
-            if (slide.visual.includes('.') || slide.visual.startsWith('http')) {
-                visualHtml = `<img src="${slide.visual}" class="max-h-48 md:max-h-56 object-contain rounded-xl border border-brand-border/40 shadow-lg shadow-black/40 mb-4 animate-fade-in" alt="Visual">`;
+            if (currentPost.useFullImage) {
+                // If it's a full pre-designed image slide, stretch it full bleed and hide metadata text
+                swiperBox.className = "relative bg-brand-card border border-brand-border rounded-3xl overflow-hidden shadow-2xl shadow-brand/10 aspect-square w-full flex flex-col justify-center p-0";
+                if (topHeader) topHeader.classList.add('hidden');
+                if (radialGlow) radialGlow.classList.add('hidden');
+                
+                contentArea.className = "absolute inset-0 w-full h-full";
+                contentArea.innerHTML = `<img src="${slide.visual}" class="w-full h-full object-cover animate-fade-in" alt="Slide Image">`;
             } else {
-                visualHtml = `<div class="mb-6 flex justify-center"><i class="${slide.visual}"></i></div>`;
-            }
+                // Default theme layout
+                swiperBox.className = "relative bg-brand-card border-2 border-brand-border rounded-3xl overflow-hidden shadow-2xl shadow-brand/10 aspect-square w-full flex flex-col justify-between p-8";
+                if (topHeader) topHeader.classList.remove('hidden');
+                if (radialGlow) radialGlow.classList.remove('hidden');
 
-            contentArea.innerHTML = `
-                <div class="px-4">
-                    <h2 class="text-lg md:text-xl font-extrabold text-brand mb-1 tracking-tight">${slide.title}</h2>
-                    <h3 class="text-sm md:text-base font-bold text-white mb-5 leading-snug">${slide.subtitle}</h3>
-                    ${visualHtml}
-                    <p class="text-xs md:text-sm text-slate-300 leading-relaxed max-w-sm mx-auto">
-                        ${slide.description}
-                    </p>
-                </div>
-            `;
+                contentArea.className = "flex-grow flex flex-col items-center justify-center text-center py-6 z-10 w-full h-full";
+                
+                let visualHtml = "";
+                if (slide.visual.includes('.') || slide.visual.startsWith('http')) {
+                    visualHtml = `<img src="${slide.visual}" class="max-h-48 md:max-h-56 object-contain rounded-xl border border-brand-border/40 shadow-lg shadow-black/40 mb-4 animate-fade-in" alt="Visual">`;
+                } else {
+                    visualHtml = `<div class="mb-6 flex justify-center"><i class="${slide.visual}"></i></div>`;
+                }
+
+                contentArea.innerHTML = `
+                    <div class="px-4">
+                        <h2 class="text-lg md:text-xl font-extrabold text-brand mb-1 tracking-tight">${slide.title}</h2>
+                        <h3 class="text-sm md:text-base font-bold text-white mb-5 leading-snug">${slide.subtitle}</h3>
+                        ${visualHtml}
+                        <p class="text-xs md:text-sm text-slate-300 leading-relaxed max-w-sm mx-auto">
+                            ${slide.description}
+                        </p>
+                    </div>
+                `;
+            }
 
             updateActiveDot();
         }
