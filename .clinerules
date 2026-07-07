@@ -1,0 +1,16 @@
+# PhilogToday Project - AI Instructions & Guidelines
+
+## 1. Token & Performance Optimization
+- `index.html` is a large file (~58KB) containing HTML, styling, and JavaScript logic in a single file.
+- When the user asks to modify or update **Schedules**, **To-Do lists (오늘의 개발 세션)**, or **Private Study tabs**:
+  - **DO NOT** read the entire `index.html` file.
+  - **DO NOT** rewrite or replace the entire file content.
+  - **DO** use line-targeted tools (`view_file` with precise line ranges, `replace_file_content`, or `multi_replace_file_content`) to read and modify only the specific target blocks.
+
+## 2. Code Structure Reference
+- **To-Do List & Milestone Calendar (일정/투두 데이터)**: Stored in the standalone data file [schedules.js](file:///c:/PhilogToday Website/schedules.js) (`todoItems` and `sprintSchedules` objects). When editing schedules or to-do lists, only modify [schedules.js](file:///c:/PhilogToday Website/schedules.js) to avoid rewriting [index.html](file:///c:/PhilogToday Website/index.html).
+- **To-Do Rendering Logic**: Dynamically rendered in [index.html](file:///c:/PhilogToday Website/index.html) under `#todo-container` based on `todoItems` from [schedules.js](file:///c:/PhilogToday Website/schedules.js).
+- **Private Study Tab**: Located inside `#tab-content-study` within the Owner Zone in [index.html](file:///c:/PhilogToday Website/index.html).
+
+## 3. Language & Output Standard
+- **CRITICAL**: 모든 대화, 시스템 설명, 코드 주석, 커밋 메시지 및 생성되는 모든 아티팩트 문서(예: `implementation_plan.md`, `task.md`, `walkthrough.md` 등)는 **반드시 한글(한국어)로 작성**해야 합니다. 영문 계획서 작성을 절대 금지합니다.

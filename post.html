@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHILOG.TODAY - 블로그 글 보기</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#8bff60',
+                            glow: 'rgba(139, 255, 96, 0.15)',
+                            dark: '#060a13',
+                            card: '#0d1527',
+                            border: '#1e2d4a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome, Google Fonts & Marked.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Pretendard:wght@400;600;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #050811;
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+        .outfit-font {
+            font-family: 'Outfit', sans-serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050811;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e2d4a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8bff60;
+        }
+
+        /* Markdown rendered styling overrides for clean layout */
+        .markdown-body h1 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            border-bottom: 1px solid rgba(30, 45, 74, 0.6);
+            padding-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+        .markdown-body h2 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            color: #8bff60;
+            line-height: 1.4;
+        }
+        .markdown-body h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.6rem;
+            color: #ffffff;
+        }
+        .markdown-body p {
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+        .markdown-body ul, .markdown-body ol {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+        .markdown-body ul {
+            list-style-type: disc;
+        }
+        .markdown-body ol {
+            list-style-type: decimal;
+        }
+        .markdown-body li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+        .markdown-body code {
+            font-family: 'Fira Code', monospace;
+            background-color: #0d1527;
+            color: #8bff60;
+            padding: 0.15rem 0.35rem;
+            border-radius: 4px;
+            font-size: 0.85em;
+            border: 1px solid #1e2d4a;
+        }
+        .markdown-body pre {
+            background-color: #0d1527;
+            padding: 1.2rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid #1e2d4a;
+        }
+        .markdown-body pre code {
+            background-color: transparent;
+            padding: 0;
+            border: none;
+            color: #cbd5e1;
+            font-size: 0.85rem;
+        }
+        .markdown-body blockquote {
+            border-left: 4px solid #8bff60;
+            padding-left: 1.2rem;
+            margin-left: 0;
+            margin-bottom: 1.5rem;
+            color: #94a3b8;
+            font-style: italic;
+            background-color: rgba(139, 255, 96, 0.02);
+            padding-top: 0.6rem;
+            padding-bottom: 0.6rem;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+        .markdown-body a {
+            color: #8bff60;
+            text-decoration: underline;
+            transition: opacity 0.2s;
+        }
+        .markdown-body a:hover {
+            opacity: 0.85;
+        }
+        .markdown-body hr {
+            border: 0;
+            border-top: 1px solid #1e2d4a;
+            margin: 2.2rem 0;
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <!-- 🌐 NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#050811]/80 backdrop-blur-md border-b border-brand-border/40 px-6 py-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="code-font text-brand font-bold text-lg tracking-wider">&lt;PHILOG.TODAY&gt;</a>
+            <a href="index.html" class="text-xs font-bold text-slate-300 hover:text-brand transition-colors flex items-center gap-1.5 border border-brand-border/60 bg-brand-card/50 px-3 py-1.5 rounded-lg">
+                <i class="fa-solid fa-arrow-left"></i> 포트폴리오로 돌아가기
+            </a>
+        </div>
+    </nav>
+
+    <!-- 📝 MAIN POST VIEWER CONTAINER -->
+    <main class="pt-32 pb-24 px-6 flex-grow">
+        <article class="max-w-3xl mx-auto">
+            
+            <!-- Metadata Header -->
+            <div id="post-meta-header" class="mb-10 text-center md:text-left border-b border-brand-border/30 pb-8 hidden">
+                <div class="flex flex-wrap justify-center md:justify-start items-center gap-2 mb-3">
+                    <span id="post-category" class="text-xs font-semibold text-brand bg-brand/10 border border-brand/20 px-2.5 py-0.5 rounded-full">카테고리</span>
+                    <span id="post-readtime" class="text-[10px] text-indigo-300 bg-indigo-950/40 border border-indigo-500/20 px-2 py-0.5 rounded-full code-font"><i class="fa-regular fa-clock"></i> 5 min read</span>
+                </div>
+                <h1 id="post-title" class="text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight mb-4">글 제목</h1>
+                <p id="post-date" class="text-xs text-slate-500 code-font"><i class="fa-regular fa-calendar mr-1"></i> 2026.07.07</p>
+            </div>
+
+            <!-- Loading Spinner / Error Panel -->
+            <div id="loading-panel" class="py-24 text-center">
+                <i class="fa-solid fa-circle-notch animate-spin text-brand text-3xl mb-4"></i>
+                <p class="text-xs text-slate-400">마크다운 문서를 읽어오는 중입니다...</p>
+            </div>
+
+            <div id="error-panel" class="py-16 text-center border border-rose-900/40 bg-rose-950/10 rounded-2xl px-6 hidden">
+                <i class="fa-solid fa-triangle-exclamation text-rose-500 text-3xl mb-4"></i>
+                <h2 class="text-lg font-bold text-white mb-2">글을 불러올 수 없습니다</h2>
+                <p class="text-xs text-slate-400 mb-6">요청하신 파일이 없거나 경로가 잘못되었습니다. 메타데이터 정보를 확인해 주세요.</p>
+                <a href="index.html" class="inline-block bg-rose-950 text-rose-200 border border-rose-900/50 hover:bg-rose-900 px-4 py-2 rounded-lg text-xs font-bold transition-all">메인 홈으로 이동</a>
+            </div>
+
+            <!-- Parsed Markdown Body Content -->
+            <div id="post-content" class="markdown-body hidden">
+                <!-- Injected via JavaScript -->
+            </div>
+
+            <!-- Post Footer Interaction -->
+            <div id="post-footer" class="mt-16 pt-8 border-t border-brand-border/30 flex flex-col md:flex-row justify-between items-center gap-6 hidden">
+                <div class="flex items-center gap-3">
+                    <button onclick="likePost()" class="flex items-center gap-2 bg-brand-card border border-brand-border/80 px-4 py-2 rounded-xl text-xs text-slate-300 hover:text-rose-400 hover:border-rose-900/50 transition-all shadow-md group">
+                        <i class="fa-solid fa-heart text-slate-500 group-hover:text-rose-500 transition-colors" id="like-icon"></i>
+                        <span>이 글 응원하기</span>
+                        <span class="code-font font-bold text-brand group-hover:text-rose-400" id="like-count">0</span>
+                    </button>
+                </div>
+                <div class="flex items-center gap-2">
+                    <a href="index.html#guestbook" class="text-xs text-slate-400 hover:text-brand transition-colors flex items-center gap-1.5">
+                        <i class="fa-regular fa-comment-dots"></i> 한 줄 코멘트는 방명록에 남기기 <i class="fa-solid fa-chevron-right text-[9px]"></i>
+                    </a>
+                </div>
+            </div>
+
+        </article>
+    </main>
+
+    <!-- 🌐 FOOTER -->
+    <footer class="py-12 border-t border-brand-border/30 bg-[#020408] text-center text-xs text-slate-500 px-6">
+        <p class="code-font mb-2">&copy; 2026 이루다 (Luda Rhee). Crafted with 💚</p>
+        <p>This page is open-source and respects user data privacy. Build in Public.</p>
+    </footer>
+
+    <!-- Dynamic schedules logic loader to retrieve meta information -->
+    <script src="schedules.js"></script>
+    <script>
+        // Retrieve URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const fileName = urlParams.get('file');
+
+        let currentPostId = "";
+
+        // Helper to calculate reading time based on word count (Korean standard)
+        function calculateReadingTime(text) {
+            const wordsPerMinute = 250; // Average reading speed for Korean
+            const wordCount = text.trim().split(/\s+/).length;
+            const readingTime = Math.ceil(wordCount / wordsPerMinute);
+            return `${readingTime} min read`;
+        }
+
+        async function loadMarkdownPost() {
+            const loadingPanel = document.getElementById('loading-panel');
+            const errorPanel = document.getElementById('error-panel');
+            const metaHeader = document.getElementById('post-meta-header');
+            const postContent = document.getElementById('post-content');
+            const postFooter = document.getElementById('post-footer');
+
+            if (!fileName) {
+                loadingPanel.classList.add('hidden');
+                errorPanel.classList.remove('hidden');
+                return;
+            }
+
+            // Find matching post metadata in schedules.js's blogPosts array
+            const matchedPost = typeof blogPosts !== 'undefined' 
+                ? blogPosts.find(p => p.file === fileName) 
+                : null;
+
+            try {
+                // Fetch the markdown file from /posts/ directory
+                const response = await fetch(`posts/${fileName}`);
+                if (!response.ok) {
+                    throw new Error('File not found');
+                }
+                const markdownText = await response.text();
+
+                // Setup header values
+                if (matchedPost) {
+                    document.getElementById('post-title').innerText = matchedPost.title;
+                    document.getElementById('post-category').innerText = matchedPost.category;
+                    document.getElementById('post-date').innerHTML = `<i class="fa-regular fa-calendar mr-1"></i> ${matchedPost.date}`;
+                    currentPostId = matchedPost.id;
+                } else {
+                    // Fallback if no matching metadata is defined in schedules.js
+                    document.getElementById('post-title').innerText = fileName.replace('.md', '').replace(/-/g, ' ');
+                    document.getElementById('post-category').innerText = '블로그';
+                    document.getElementById('post-date').innerHTML = `<i class="fa-regular fa-calendar mr-1"></i> 오늘`;
+                    currentPostId = fileName;
+                }
+
+                // Render calculated read time
+                document.getElementById('post-readtime').innerHTML = `<i class="fa-regular fa-clock"></i> ${calculateReadingTime(markdownText)}`;
+
+                // Load and render like counts from localstorage
+                loadLikes();
+
+                // Parse markdown into HTML and inject it
+                postContent.innerHTML = marked.parse(markdownText);
+
+                // Show rendered components
+                loadingPanel.classList.add('hidden');
+                metaHeader.classList.remove('hidden');
+                postContent.classList.remove('hidden');
+                postFooter.classList.remove('hidden');
+
+            } catch (err) {
+                console.error("Error loading post:", err);
+                loadingPanel.classList.add('hidden');
+                errorPanel.classList.remove('hidden');
+            }
+        }
+
+        // Like/Upvote Local storage logic
+        function loadLikes() {
+            const likesDb = JSON.parse(localStorage.getItem('post_likes_db') || '{}');
+            const likeCount = likesDb[currentPostId] || 0;
+            document.getElementById('like-count').innerText = likeCount;
+
+            const likedPosts = JSON.parse(localStorage.getItem('liked_posts') || '[]');
+            if (likedPosts.includes(currentPostId)) {
+                const icon = document.getElementById('like-icon');
+                icon.className = "fa-solid fa-heart text-rose-500 scale-110";
+            }
+        }
+
+        function likePost() {
+            const likedPosts = JSON.parse(localStorage.getItem('liked_posts') || '[]');
+            const likesDb = JSON.parse(localStorage.getItem('post_likes_db') || '{}');
+            const icon = document.getElementById('like-icon');
+            const likeCountEl = document.getElementById('like-count');
+
+            if (likedPosts.includes(currentPostId)) {
+                // Unlike if clicked again
+                const index = likedPosts.indexOf(currentPostId);
+                likedPosts.splice(index, 1);
+                likesDb[currentPostId] = Math.max(0, (likesDb[currentPostId] || 1) - 1);
+                icon.className = "fa-solid fa-heart text-slate-500";
+            } else {
+                // Like
+                likedPosts.push(currentPostId);
+                likesDb[currentPostId] = (likesDb[currentPostId] || 0) + 1;
+                icon.className = "fa-solid fa-heart text-rose-500 animate-bounce scale-110";
+            }
+
+            localStorage.setItem('liked_posts', JSON.stringify(likedPosts));
+            localStorage.setItem('post_likes_db', JSON.stringify(likesDb));
+            likeCountEl.innerText = likesDb[currentPostId];
+        }
+
+        // Run loader on load
+        window.addEventListener('DOMContentLoaded', loadMarkdownPost);
+    </script>
+</body>
+</html>
