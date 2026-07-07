@@ -39,6 +39,14 @@ const todoItems = [
 
 const blogPosts = [
     {
+        id: "github-multi-device",
+        category: "기술/일상",
+        date: "2026.07.07",
+        title: "C드라이브 용량 절약과 GitHub 중심 개발 환경 구축",
+        summary: "로컬 컴퓨터의 용량 문제 해결법과 왜 구글 드라이브 대신 깃허브를 통해 안전하게 멀티 디바이스 코딩을 해야 하는지 개념도와 함께 공유합니다.",
+        file: "github-multi-device.md"
+    },
+    {
         id: "solo-entrepreneur",
         category: "에세이/일상",
         date: "2026.07.07",
