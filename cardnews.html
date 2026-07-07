@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHILOG.TODAY - 카드뉴스 연구소</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#8bff60',
+                            glow: 'rgba(139, 255, 96, 0.15)',
+                            dark: '#060a13',
+                            card: '#0d1527',
+                            border: '#1e2d4a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Pretendard:wght@400;600;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background-color: #050811;
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+        .instagram-gradient {
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050811;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e2d4a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8bff60;
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <!-- 🌐 NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#050811]/80 backdrop-blur-md border-b border-brand-border/40 px-6 py-4">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="code-font text-brand font-bold text-lg tracking-wider">&lt;PHILOG.TODAY&gt;</a>
+            <div class="flex items-center gap-3">
+                <a href="https://instagram.com/philogtoday.ai.lab" target="_blank" class="text-xs font-bold text-slate-300 hover:text-pink-400 transition-colors flex items-center gap-1">
+                    <i class="fa-brands fa-instagram text-base"></i> @philogtoday.ai.lab
+                </a>
+                <a href="index.html" class="text-xs font-bold text-slate-300 hover:text-brand transition-colors flex items-center gap-1.5 border border-brand-border/60 bg-brand-card/50 px-3 py-1.5 rounded-lg">
+                    <i class="fa-solid fa-arrow-left"></i> 돌아가기
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 📝 MAIN VIEWER -->
+    <main class="pt-32 pb-24 px-6 flex-grow flex flex-col items-center justify-center">
+        <div class="max-w-xl w-full">
+            
+            <div class="mb-6 text-center">
+                <span class="text-xs font-bold text-brand uppercase tracking-wider"><i class="fa-solid fa-flask-vial"></i> @philogtoday.ai.lab 카드뉴스</span>
+                <h1 id="news-title" class="text-xl md:text-2xl font-extrabold text-white mt-1">로딩 중...</h1>
+            </div>
+
+            <!-- CARD NEWS SWIPER BOX -->
+            <div class="relative bg-brand-card border-2 border-brand-border rounded-3xl overflow-hidden shadow-2xl shadow-brand/10 aspect-square w-full flex flex-col justify-between p-8 relative">
+                
+                <!-- TOP HEADER -->
+                <div class="flex justify-between items-center z-10">
+                    <div class="flex items-center gap-2">
+                        <div class="instagram-gradient p-[2px] rounded-full">
+                            <div class="w-8 h-8 rounded-full border-2 border-brand-card bg-[#050811] flex items-center justify-center text-xs code-font text-brand font-bold select-none">
+                                PL
+                            </div>
+                        </div>
+                        <div>
+                            <span class="block text-[10px] font-bold text-slate-200">philogtoday.ai.lab</span>
+                            <span class="block text-[8px] text-slate-500">AI & Developer Lab</span>
+                        </div>
+                    </div>
+                    <span id="slide-indicator" class="text-[10px] bg-brand-dark border border-brand-border px-2 py-0.5 rounded-full text-slate-400 code-font">1 / 7</span>
+                </div>
+
+                <!-- MIDDLE CONTENT (SLIDE BODY) -->
+                <div class="flex-grow flex flex-col items-center justify-center text-center py-6 z-10" id="slide-content-area">
+                    <!-- Dynamic slide content loaded here -->
+                </div>
+
+                <!-- BOTTOM NAV -->
+                <div class="flex justify-between items-center z-10 pt-4 border-t border-brand-border/40">
+                    <button onclick="prevSlide()" class="w-9 h-9 rounded-full bg-brand-dark hover:bg-brand/10 border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand transition-all">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <!-- Small dots indicator -->
+                    <div class="flex gap-1.5" id="dots-container"></div>
+                    <button onclick="nextSlide()" class="w-9 h-9 rounded-full bg-brand-dark hover:bg-brand/10 border border-brand-border flex items-center justify-center text-slate-300 hover:text-brand transition-all">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Subtle radial glow background behind the slide -->
+                <div class="absolute inset-0 bg-radial-gradient from-brand/5 to-transparent pointer-events-none"></div>
+            </div>
+
+            <!-- Helpful notice -->
+            <p class="text-center text-[10px] text-slate-500 mt-6">
+                <i class="fa-solid fa-circle-info text-brand/80"></i> 키보드의 좌우 방향키(&larr; &rarr;)를 사용해서 슬라이드를 넘길 수 있습니다.
+            </p>
+        </div>
+    </main>
+
+    <!-- 🌐 FOOTER -->
+    <footer class="py-12 border-t border-brand-border/30 bg-[#020408] text-center text-xs text-slate-500 px-6">
+        <p class="code-font mb-2">&copy; 2026 이루다 (Luda Rhee). Crafted with 💚</p>
+        <p>This page is open-source and respects user data privacy. Build in Public.</p>
+    </footer>
+
+    <!-- Load data schedules -->
+    <script src="schedules.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const cardId = urlParams.get('id') || 'github-multi-device';
+
+        let currentPost = null;
+        let currentSlideIndex = 0;
+
+        function loadCardNews() {
+            currentPost = typeof cardNewsList !== 'undefined'
+                ? cardNewsList.find(c => c.id === cardId)
+                : null;
+
+            if (!currentPost) {
+                document.getElementById('news-title').innerText = "카드뉴스를 찾을 수 없습니다.";
+                return;
+            }
+
+            document.getElementById('news-title').innerText = currentPost.title;
+            currentSlideIndex = 0;
+            renderSlide();
+            renderDots();
+        }
+
+        function renderSlide() {
+            const slide = currentPost.slides[currentSlideIndex];
+            const contentArea = document.getElementById('slide-content-area');
+            const indicator = document.getElementById('slide-indicator');
+
+            indicator.innerText = `${currentSlideIndex + 1} / ${currentPost.slides.length}`;
+
+            // Handle visual content (image file vs font-awesome class icon)
+            let visualHtml = "";
+            if (slide.visual.includes('.') || slide.visual.startsWith('http')) {
+                visualHtml = `<img src="${slide.visual}" class="max-h-48 md:max-h-56 object-contain rounded-xl border border-brand-border/40 shadow-lg shadow-black/40 mb-4 animate-fade-in" alt="Visual">`;
+            } else {
+                visualHtml = `<div class="mb-6 flex justify-center"><i class="${slide.visual}"></i></div>`;
+            }
+
+            contentArea.innerHTML = `
+                <div class="px-4">
+                    <h2 class="text-lg md:text-xl font-extrabold text-brand mb-1 tracking-tight">${slide.title}</h2>
+                    <h3 class="text-sm md:text-base font-bold text-white mb-5 leading-snug">${slide.subtitle}</h3>
+                    ${visualHtml}
+                    <p class="text-xs md:text-sm text-slate-300 leading-relaxed max-w-sm mx-auto">
+                        ${slide.description}
+                    </p>
+                </div>
+            `;
+
+            updateActiveDot();
+        }
+
+        function renderDots() {
+            const dotsContainer = document.getElementById('dots-container');
+            dotsContainer.innerHTML = "";
+            currentPost.slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.id = `dot-${idx}`;
+                dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${idx === currentSlideIndex ? 'bg-brand scale-125' : 'bg-brand-border'}`;
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateActiveDot() {
+            currentPost.slides.forEach((_, idx) => {
+                const dot = document.getElementById(`dot-${idx}`);
+                if (dot) {
+                    if (idx === currentSlideIndex) {
+                        dot.className = "w-2 h-2 rounded-full bg-brand scale-125 transition-all duration-300";
+                    } else {
+                        dot.className = "w-2 h-2 rounded-full bg-brand-border transition-all duration-300";
+                    }
+                }
+            });
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < currentPost.slides.length - 1) {
+                currentSlideIndex++;
+                renderSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                renderSlide();
+            }
+        }
+
+        // Keyboard navigation
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', loadCardNews);
+    </script>
+</body>
+</html>

@@ -71,3 +71,54 @@ const blogPosts = [
         file: "idea-note.md"
     }
 ];
+
+const cardNewsList = [
+    {
+        id: "github-multi-device",
+        title: "C드라이브 용량 절약과 GitHub 중심 개발 환경 구축",
+        slides: [
+            {
+                title: "C드라이브 용량 부족?",
+                subtitle: "개발자 프로젝트를 '구글 드라이브'에 올리면 안 되는 이유",
+                visual: "github_dev_sync.png",
+                description: "로컬 용량이 빨간불일 때 흔히 하는 고민, 하지만 엄청난 리스크가 숨어 있습니다."
+            },
+            {
+                title: "리스크 1. 동기화 충돌",
+                subtitle: "내 소스 코드가 순식간에 깨질 수 있습니다.",
+                visual: "fa-solid fa-triangle-exclamation text-rose-500 text-6xl animate-pulse",
+                description: "구글 드라이브의 실시간 파일 잠금은 소중한 코드 편집 도중 숨겨진 설정 파일(.git 등)을 강제로 홀딩해 영구적인 코드 유실을 일으킵니다."
+            },
+            {
+                title: "리스크 2. 자동 배포 마비",
+                subtitle: "Vercel 10초 무중단 자동 배포 불가",
+                visual: "fa-solid fa-cloud-slash text-slate-500 text-6xl",
+                description: "구글 드라이브에는 코드를 업로드했을 때 배포 서버로 신호를 날려주는 웹훅(Webhook) 체계가 없어 변경 사항을 자동으로 반영할 수 없습니다."
+            },
+            {
+                title: "해결책 1. 최고의 클라우드 GitHub",
+                subtitle: "전체 프로젝트 용량은 고작 2MB 미만!",
+                visual: "fa-brands fa-github text-brand text-6xl",
+                description: "웹사이트 전체 용량은 사진을 합쳐도 극소량입니다. 깃허브에 백업하고 나면, 로컬 저장소의 폴더는 언제든 마음 놓고 지우셔도 됩니다."
+            },
+            {
+                title: "해결책 2. 어디서나 git clone",
+                subtitle: "어떤 기기든 터미널 명령어 한 줄이면 복사 완료",
+                visual: "fa-solid fa-terminal text-indigo-400 text-6xl",
+                description: "새 컴퓨터에서 아래 명령어를 실행하면 즉시 프로젝트 복제가 완료되어 즉시 코딩이 가능합니다.<br><code class='code-font text-[9px] bg-brand-dark px-2 py-1 rounded border border-brand-border text-brand mt-2 inline-block'>git clone https://github.com/aprilbirdhi-star/philog.today.git</code>"
+            },
+            {
+                title: "해결책 3. 브라우저 치트키",
+                subtitle: "마침표(.) 단축키 하나로 태블릿에서도 웹 코딩!",
+                visual: "fa-solid fa-keyboard text-brand text-6xl",
+                description: "인터넷 브라우저로 깃허브 저장소 주소에 접속한 뒤, 키보드 마침표(.)를 누르면 클라우드 VS Code가 켜져 즉시 설치 없이 편집이 가능합니다."
+            },
+            {
+                title: "더 보러 가기 👉",
+                subtitle: "1인 메이커 생존기, 지금 바로 방문해 보세요!",
+                visual: "fa-solid fa-rocket text-brand text-6xl animate-bounce",
+                description: "더 자세한 에세이와 기술 일지가 궁금하시다면 프로필 링크의 <span class='text-brand font-bold'>philog.today</span>에 접속해 보세요!"
+            }
+        ]
+    }
+];
