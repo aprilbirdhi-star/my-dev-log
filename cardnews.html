@@ -135,8 +135,6 @@
         <p>This page is open-source and respects user data privacy. Build in Public.</p>
     </footer>
 
-    <!-- Load data schedules -->
-    <script src="schedules.js"></script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const cardId = urlParams.get('id') || 'github-multi-device';
@@ -144,10 +142,18 @@
         let currentPost = null;
         let currentSlideIndex = 0;
 
-        function loadCardNews() {
-            currentPost = typeof cardNewsList !== 'undefined'
-                ? cardNewsList.find(c => c.id === cardId)
-                : null;
+        async function loadCardNews() {
+            let cardNewsList = [];
+            try {
+                const resCardNews = await fetch('data/cardnews.json');
+                if (resCardNews.ok) {
+                    cardNewsList = await resCardNews.json();
+                }
+            } catch (e) {
+                console.warn("Failed to fetch cardnews data.", e);
+            }
+
+            currentPost = cardNewsList.find(c => c.id === cardId) || null;
 
             if (!currentPost) {
                 document.getElementById('news-title').innerText = "카드뉴스를 찾을 수 없습니다.";

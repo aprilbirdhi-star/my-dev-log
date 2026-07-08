@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHILOG.TODAY - 이루다 포트폴리오</title>
-    <!-- Dynamic schedules & todo items -->
-    <script src="schedules.js"></script>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -54,6 +52,17 @@
     </style>
 </head>
 <body class="text-slate-100 transition-colors duration-300">
+
+    <!-- CORS Error Guidance Banner (Visible only on file:// protocol) -->
+    <div id="cors-warning-banner" class="hidden sticky top-0 z-[100] bg-amber-950 border-b border-amber-800 text-amber-200 px-6 py-3.5 text-xs">
+        <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
+            <span class="flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-amber-500 text-base animate-pulse"></i>
+                <span><strong>로컬 보안 경고(CORS):</strong> 현재 브라우저로 HTML 파일을 직접 실행하고 있어 데이터 로드(JSON 페치)가 제한됩니다. 정상적인 작동을 확인하려면 **VS Code Live Server** 등의 로컬 웹 서버 환경에서 실행해 주세요.</span>
+            </span>
+            <button onclick="document.getElementById('cors-warning-banner').remove()" class="text-amber-400 hover:text-amber-100 font-bold px-2 py-1 text-sm">&times;</button>
+        </div>
+    </div>
 
     <!-- 🌐 NAVIGATION BAR -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-[#050811]/80 backdrop-blur-md border-b border-brand-border/40 px-6 py-4">
@@ -548,9 +557,40 @@
             }
         }
 
+        // --- GLOBAL DATA & CORS CONFIG ---
+        let todoItems = [];
+        let sprintSchedules = {};
+        let blogPosts = [];
+
+        function checkCORS() {
+            if (window.location.protocol === 'file:') {
+                const banner = document.getElementById('cors-warning-banner');
+                if (banner) banner.classList.remove('hidden');
+            }
+        }
+
+        async function loadData() {
+            checkCORS();
+            try {
+                const resSchedules = await fetch('data/schedules.json');
+                if (!resSchedules.ok) throw new Error('Schedules load failed');
+                const schedulesData = await resSchedules.json();
+                todoItems = schedulesData.todoItems || [];
+                sprintSchedules = schedulesData.sprintSchedules || {};
+
+                const resPosts = await fetch('data/posts.json');
+                if (!resPosts.ok) throw new Error('Posts load failed');
+                blogPosts = await resPosts.json();
+                return true;
+            } catch (e) {
+                console.error("CORS error or JSON file missing. Running fallback static setup.", e);
+                return false;
+            }
+        }
+
         // --- TODO LIST & AI SPEECH CONTROLLER ---
         let completedTodosCount = 0;
-        const totalTodosCount = todoItems.length;
+        let totalTodosCount = 0;
 
         const botSpeeches = [
             "\"안녕하세요 이루다님! 오늘도 힘차게 스프린트 목적지에 달성해 보죠!\"",
@@ -562,6 +602,7 @@
         ];
 
         function initTodos() {
+            totalTodosCount = todoItems.length;
             // Render todos HTML dynamically
             const container = document.getElementById('todo-container');
             container.innerHTML = '';
@@ -639,6 +680,10 @@
             const emptyOffset = 3;
             const daysInMonth = 31;
 
+            const today = new Date();
+            const isJuly2026 = today.getFullYear() === 2026 && today.getMonth() === 6; // July is index 6
+            const todayDay = isJuly2026 ? today.getDate() : 8;
+
             for(let i=0; i < emptyOffset; i++) {
                 grid.innerHTML += `<div></div>`;
             }
@@ -646,7 +691,7 @@
             for(let day=1; day<=daysInMonth; day++) {
                 const dateStr = `2026.07.${day < 10 ? '0' + day : day}`;
                 const hasSchedule = sprintSchedules[dateStr] !== undefined;
-                const isToday = day === 6;
+                const isToday = day === todayDay;
 
                 let classes = "h-9 w-9 mx-auto flex items-center justify-center rounded-lg text-xs font-medium cursor-pointer transition-colors relative ";
                 
@@ -667,11 +712,17 @@
                     </div>
                 `;
             }
-            selectDate("2026.07.06"); // Set Initial
+            const initialDateStr = `2026.07.${todayDay < 10 ? '0' + todayDay : todayDay}`;
+            selectDate(initialDateStr); // Set Initial
         }
 
         function selectDate(dateStr) {
-            document.getElementById('selected-date-title').innerText = `${dateStr} ${dateStr === '2026.07.06' ? '(오늘)' : ''}`;
+            const today = new Date();
+            const isJuly2026 = today.getFullYear() === 2026 && today.getMonth() === 6;
+            const todayDay = isJuly2026 ? today.getDate() : 8;
+            const todayStr = `2026.07.${todayDay < 10 ? '0' + todayDay : todayDay}`;
+            
+            document.getElementById('selected-date-title').innerText = `${dateStr} ${dateStr === todayStr ? '(오늘)' : ''}`;
             const listContainer = document.getElementById('schedule-list');
             listContainer.innerHTML = "";
 
@@ -977,7 +1028,8 @@
         }
 
         // Initialize elements
-        window.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadData();
             initTodos();
             renderCalendar();
             loadComments();
