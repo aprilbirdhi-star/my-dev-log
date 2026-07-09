@@ -1,5 +1,21 @@
 [
   {
+    "id": "ai-studio-vs-antigravity",
+    "category": "기술/학습",
+    "date": "2026.07.09",
+    "title": "학습노트: Google AI Studio vs 안티그래비티 차이점 및 핵심 AI 용어 정리",
+    "summary": "Google AI Studio와 안티그래비티(Antigravity)의 타겟, 목적, 구현 방식의 차이점을 분석하고, 비전공자도 쉽게 이해할 수 있는 주요 AI 기술 용어(UI, 프롬프트 엔지니어링, 아키텍처)를 정리합니다.",
+    "file": "ai-studio-vs-antigravity.md"
+  },
+  {
+    "id": "stitch-opal-failure",
+    "category": "기술/실패배움",
+    "date": "2026.07.09",
+    "title": "실패노트: Google Stitch 무한 로딩 오류와 Opal 블랙유머 웹툰 재생성 실패기",
+    "summary": "구글 스티치(Stitch)를 통한 모바일 앱 빌드 과정에서 발생한 API 키 복사 오류 및 무한 로딩 버그와 구글 오팔(Opal)을 통한 블랙유머 웹툰 재구성 실패 과정을 생생히 기록합니다.",
+    "file": "stitch-opal-failure.md"
+  },
+  {
     "id": "developer-farming",
     "category": "에세이/실패배움",
     "date": "2026.07.09",
